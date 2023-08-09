@@ -1,0 +1,138 @@
+/* 设置整体页面字体为Arial（或sans-serif字体族） */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* 计算器容器样式 */
+.calculator {
+
+  width: 320px; /* 固定宽度 */
+  height: 475px; /* 固定高度 */
+  position: absolute; /* 设置定位方式为绝对定位 */
+  top: 50%; /* 使容器顶部距离窗口顶部50% */
+  left: 50%; /* 使容器左侧距离窗口左侧50% */
+  transform: translate(-50%, -50%); /* 使用负的50%偏移来居中 */
+  margin: 0; /* 去除默认外边距 */
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 具有圆角效果的按钮样式 */
+.btn {
+  font-size: 20px; /* 设置字体大小 */
+  width: 60px; /* 设置按钮宽度 */
+  height: 60px; /* 设置按钮高度 */
+  margin: 2px; /* 设置外边距 */
+  border: none; /* 去除边框 */
+  border-radius: 10px; /* 添加圆角效果 */
+  cursor: pointer; /* 设置鼠标指针样式为手型 */
+}
+
+/* 特定按钮添加圆角效果的样式 */
+.operator-btn,
+#clear-btn,
+#equal-btn,
+#backspace-btn {
+  border-radius: 10px; /* 添加圆角效果 */
+}
+
+/* 显示输出框样式 */
+#display {
+  padding: 10px; /* 添加内边距 */
+  font-size: 20px; /* 设置字体大小 */
+  width: 100%; /* 设置宽度为100% */
+  box-sizing: border-box; /* 设置盒模型为border-box */
+  border: 1px solid #ccc; /* 添加边框样式 */
+  border-radius: 10px; /* 添加圆角效果 */
+  height: 90px; /* 设置输出框高度 */
+  overflow: auto; /* 添加滚动条，如果内容溢出 */
+}
+
+/* 按钮容器样式 */
+.buttons {
+  display: grid; /* 使用网格布局 */
+  grid-template-columns: repeat(4, 1fr); /* 每行四个按键 */
+  grid-gap: 4px; /* 设置网格间隔 */
+  margin-top: 4px; /* 设置外边距 */
+}
+
+/* 按钮样式 */
+.num-btn, .operator-btn, #clear-btn, #equal-btn, .decimal-btn {
+  padding: 15px; /* 添加内边距 */
+  font-size: 20px; /* 设置字体大小 */
+  text-align: center; /* 设置文本居中 */
+  width: 100%; /* 设置宽度为100% */
+  box-sizing: border-box; /* 设置盒模型为border-box */
+}
+
+/* 显示表达式的样式 */
+.expression {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  font-size: 18px;
+}
+
+/* 显示结果的样式 */
+.result {
+  display: block; /* 设置为块级元素 */
+  text-align: right; /* 设置文本右对齐 */
+  font-size: 24px; /* 设置字体大小 */
+}
+
+/* 大屏幕的媒体查询 */
+@media (min-width: 600px) {
+  .calculator {
+    width: 600px; /* 设置大屏幕的宽度 */
+  }
+
+  #display {
+    padding: 20px; /* 调整大屏幕的内边距 */
+    font-size: 24px; /* 调整大屏幕的字体大小 */
+  }
+
+  .num-btn, .operator-btn, #clear-btn, #equal-btn, .decimal-btn {
+    padding: 20px; /* 调整大屏幕的内边距 */
+    font-size: 24px; /* 调整大屏幕的字体大小 */
+  }
+}
+
+
+/* 为所有按钮添加动态效果 */
+.btn.active {
+  animation: blink 0.5s;
+}
+
+@keyframes blink {
+  0% {
+    border-color: #ccc;
+    background-color: white;
+  }
+  50% {
+    border-color: #ff8c00;
+    background-color: #ffdbac;
+  }
+  100% {
+    border-color: #ccc;
+    background-color: white;
+  }
+}
+
+
+
+/* 为等于号按钮特别设置闪烁效果 */
+#equal-btn.active {
+  animation: blink-once 0.5s;
+}
+
+@keyframes blink-once {
+  0%, 50% {
+    border-color: #ccc;
+    background-color: white;
+  }
+  50% {
+    border-color: #ff8c00;
+    background-color: #ffdbac;
+  }
+}
