@@ -78,7 +78,7 @@ function calculateExpression() {
     currentExpression = '';
     displayResult = false;
   }
-updateDisplay();
+
   
   // 在动画结束后移除闪烁类名
   equalButton.removeEventListener('animationend', removeAnimationClass);
@@ -88,4 +88,4 @@ updateDisplay();
 }
 
 // 初始化更新显示
-updateDisplay();
+
