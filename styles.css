@@ -39,6 +39,7 @@ body {
   cursor: pointer; /* 设置鼠标指针样式为手型 */
 }
 
+
 /* 特定按钮添加圆角效果的样式 */
 .operator-btn,
 #clear-btn,
@@ -69,7 +70,7 @@ body {
 }
 
 /* 按钮样式 */
-.num-btn, .operator-btn, #clear-btn, #equal-btn, .decimal-btn {
+.num-btn, .operator-btn, #equal-btn, .decimal-btn{
   padding: 15px; /* 添加内边距 */
   font-size: 20px; /* 设置字体大小 */
   text-align: center; /* 设置文本居中 */
@@ -79,10 +80,10 @@ body {
   background-color: rgb(167, 214, 215);
 }
 
-/* 添加鼠标悬停时的样式 */
-/* .num-btn:hover, .operator-btn:hover, #clear-btn:hover, #equal-btn:hover, .decimal-btn:hover {
-  background-color: #f2f2f2;
-} */
+.num-btn.dig-btn{
+  background-color: #26b7ab;
+  
+}
 
 /* 显示表达式的样式 */
 .expression {
@@ -116,16 +117,29 @@ body {
   }
 }
 
-/* 数字按键悬停时的样式 */
+.operator-btn.plus-btn,.minus-btn,.mul-btn,.divide-btn{
+  background-color: #2196F3; 
+}
+.operator-btn.parentheses-btn {
+  background-color: rgb(140, 136, 220); /* 设置括号键的背景颜色 */
+}
+/* 退格键的样式 */
+.operator-btn.backspace-btn {
+  background-color: rgb(163, 153, 5); /* 设置退格键的背景颜色 */
+}
+.operator-btn.clear-btn {
+  background-color: rgb(202, 86, 28); /* 设置清除键的背景颜色 */
+  /* 可以根据需要设置其他样式，如边框、圆角等 */
+}
+
 
 /* 按钮悬停样式 */
 .btn:hover {
   background-color: rgb(156, 166, 195); 
 }
-
 /* 清除按钮悬停样式 */
 #clear-btn:hover {
-  background-color: rgb(186, 130, 130); 
+  background-color: rgb(161, 34, 34); 
 }
 
 /* 退格按钮悬停样式 */
@@ -136,12 +150,10 @@ body {
 #equal-btn:hover {
   background-color: rgb(53, 112, 112);
 }
-
 /*更改等于号背景颜色*/
 #equal-btn {
   background-color: #49578e; 
 }
-
 /* 为等于号按钮特别设置闪烁效果 */
 #equal-btn.active {
   animation: blink-once 0.5s;
@@ -190,7 +202,7 @@ body {
   width: 52.8px; /* 宽度 */
   height: 30px;
   bottom: 0px; /* 底部位置 */
-  background-color: #ccc; /* 背景颜色 */
+  background-color: #dddddd; /* 背景颜色 */
   transition: .4s; /* 过渡效果持续时间 */
   border-radius: 22px;
 }
@@ -203,7 +215,7 @@ body {
   width: 22px; /* 宽度 */
   left: 2px; /* 左侧位置 */
   bottom: 4px; /* 底部位置 */
-  background-color: white; /* 背景颜色 */
+  background-color: #309df5; /* 背景颜色 */
   transition: .4s; /* 过渡效果持续时间 */
   border-radius: 22px;
 
@@ -244,7 +256,23 @@ input:checked + .slider:before {
   background-color: #ff8c00; /* 或者你想要的颜色 */
   color: black; /* 或者适合的文字颜色 */
 }
+.calculator.night-mode .dig-btn{
+  background-color: #294545;
+}
 
+/*夜间下侧键的样式*/
+.calculator.night-mode .night-btn{
+  background-color: #0d385b;
+}
+.calculator.night-mode .backspace-btn{
+  background-color: #49578e;
+}
+.calculator.night-mode .parentheses-btn{
+  background-color: rgb(59, 55, 120);
+}
+.calculator.night-mode .clear-btn{
+  background-color: #18535d;
+}
 /* 夜间模式下显示区域的样式 */
 .calculator.night-mode #display {
   background-color: #333;
