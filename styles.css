@@ -1,21 +1,31 @@
 /* 设置整体页面字体为Arial（或sans-serif字体族） */
 body {
   font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* 设置最小高度为视口高度 */
+
 }
 
 /* 计算器容器样式 */
 .calculator {
 
-  width: 320px; /* 固定宽度 */
-  height: 475px; /* 固定高度 */
+  width: 346px; /* 固定宽度 */
+  height: 480px; /* 固定高度 */
   position: absolute; /* 设置定位方式为绝对定位 */
-  top: 50%; /* 使容器顶部距离窗口顶部50% */
-  left: 50%; /* 使容器左侧距离窗口左侧50% */
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%); /* 使用负的50%偏移来居中 */
-  margin: 0; /* 去除默认外边距 */
+  margin: 0px; /* 去除默认外边距 */
   padding: 20px;
   border: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #bbced3;
+  justify-content: center;
+  align-items: center;
 }
 
 /* 具有圆角效果的按钮样式 */
@@ -23,7 +33,7 @@ body {
   font-size: 20px; /* 设置字体大小 */
   width: 60px; /* 设置按钮宽度 */
   height: 60px; /* 设置按钮高度 */
-  margin: 2px; /* 设置外边距 */
+  margin: 3px; /* 设置外边距 */
   border: none; /* 去除边框 */
   border-radius: 10px; /* 添加圆角效果 */
   cursor: pointer; /* 设置鼠标指针样式为手型 */
@@ -43,7 +53,7 @@ body {
   font-size: 20px; /* 设置字体大小 */
   width: 100%; /* 设置宽度为100% */
   box-sizing: border-box; /* 设置盒模型为border-box */
-  border: 1px solid #ccc; /* 添加边框样式 */
+  border: 1px solid #294545; /* 添加边框样式 */
   border-radius: 10px; /* 添加圆角效果 */
   height: 90px; /* 设置输出框高度 */
   overflow: auto; /* 添加滚动条，如果内容溢出 */
@@ -53,8 +63,9 @@ body {
 .buttons {
   display: grid; /* 使用网格布局 */
   grid-template-columns: repeat(4, 1fr); /* 每行四个按键 */
-  grid-gap: 4px; /* 设置网格间隔 */
-  margin-top: 4px; /* 设置外边距 */
+  grid-gap: 3px; /* 设置网格间隔 */
+  margin-top: 2px; /* 设置外边距 */
+  grid-row-gap: 1px; /* 设置垂直间距 */
 }
 
 /* 按钮样式 */
@@ -64,7 +75,14 @@ body {
   text-align: center; /* 设置文本居中 */
   width: 100%; /* 设置宽度为100% */
   box-sizing: border-box; /* 设置盒模型为border-box */
+  transition: background-color 0.3s; /* 添加过渡效果 */
+  background-color: rgb(167, 214, 215);
 }
+
+/* 添加鼠标悬停时的样式 */
+/* .num-btn:hover, .operator-btn:hover, #clear-btn:hover, #equal-btn:hover, .decimal-btn:hover {
+  background-color: #f2f2f2;
+} */
 
 /* 显示表达式的样式 */
 .expression {
@@ -98,28 +116,31 @@ body {
   }
 }
 
+/* 数字按键悬停时的样式 */
 
-/* 为所有按钮添加动态效果 */
-.btn.active {
-  animation: blink 0.5s;
+/* 按钮悬停样式 */
+.btn:hover {
+  background-color: rgb(156, 166, 195); 
 }
 
-@keyframes blink {
-  0% {
-    border-color: #ccc;
-    background-color: white;
-  }
-  50% {
-    border-color: #ff8c00;
-    background-color: #ffdbac;
-  }
-  100% {
-    border-color: #ccc;
-    background-color: white;
-  }
+/* 清除按钮悬停样式 */
+#clear-btn:hover {
+  background-color: rgb(186, 130, 130); 
 }
 
+/* 退格按钮悬停样式 */
+#backspace-btn:hover {
+  background-color: orange; /* 修改为你想要的退格按钮的悬停颜色 */
+}
+/*等于号悬停样式*/
+#equal-btn:hover {
+  background-color: rgb(53, 112, 112);
+}
 
+/*更改等于号背景颜色*/
+#equal-btn {
+  background-color: #49578e; 
+}
 
 /* 为等于号按钮特别设置闪烁效果 */
 #equal-btn.active {
@@ -135,4 +156,107 @@ body {
     border-color: #ff8c00;
     background-color: #ffdbac;
   }
+}
+
+/* 夜间模式切换按钮容器样式 */
+.mode-toggle {
+  display: flex; /* 使用弹性布局 */
+  align-items: center; /* 垂直居中对齐 */
+  margin-top: 10px; /* 顶部外边距 */
+}
+
+/* 开关样式 */
+.switch {
+  position: relative; /* 相对定位 */
+  display: inline-block; /* 内联块级元素 */
+  width: 60px; /* 宽度 */
+  height: 34px; /* 高度 */
+}
+
+/* 开关输入隐藏样式 */
+.switch input {
+  opacity: 0; /* 透明度为0 */
+  width: 0; /* 宽度为0 */
+  height: 0; /* 高度为0 */
+}
+
+/* 滑块样式 */
+.slider {
+  position: absolute; /* 绝对定位 */
+  cursor: pointer; /* 光标样式为手型 */
+  top: 0; /* 顶部位置 */
+  left: 10px; /* 左侧位置 */
+  right: 40px; /* 右侧位置 */
+  width: 52.8px; /* 宽度 */
+  height: 30px;
+  bottom: 0px; /* 底部位置 */
+  background-color: #ccc; /* 背景颜色 */
+  transition: .4s; /* 过渡效果持续时间 */
+  border-radius: 22px;
+}
+
+/* 滑块前景样式 */
+.slider:before {
+  position: absolute; /* 绝对定位 */
+  content: ""; /* 内容为空 */
+  height: 22px; /* 高度 */
+  width: 22px; /* 宽度 */
+  left: 2px; /* 左侧位置 */
+  bottom: 4px; /* 底部位置 */
+  background-color: white; /* 背景颜色 */
+  transition: .4s; /* 过渡效果持续时间 */
+  border-radius: 22px;
+
+}
+
+/* 输入被选中时的滑块样式 */
+input:checked + .slider {
+  background-color: #2196F3; /* 背景颜色 */
+}
+
+/* 输入被选中时的滑块前景样式 */
+input:checked + .slider:before {
+  transform: translateX(26px); /* 平移效果 */
+}
+
+
+.calculator.night-mode {
+  background-color: #222; /* 夜间模式的背景颜色 */
+  color: white; /* 夜间模式的文字颜色 */
+}
+
+/* 夜间模式下按钮的样式 */
+.calculator.night-mode .btn {
+  background-color: #444;
+  color: white;
+}
+
+/* 夜间模式下数字键的悬停样式 */
+.calculator.night-mode .btn:hover {
+  background-color: #666;
+}
+/*夜间模式下等于号的悬停样式*/
+.calculator.night-mode #equal-btn:hover {
+  background-color: rgb(53, 112, 112);
+}
+/* 夜间模式下等号键的样式 */
+.calculator.night-mode #equal-btn {
+  background-color: #ff8c00; /* 或者你想要的颜色 */
+  color: black; /* 或者适合的文字颜色 */
+}
+
+/* 夜间模式下显示区域的样式 */
+.calculator.night-mode #display {
+  background-color: #333;
+  color: white;
+}
+
+/* 夜间模式下滑动按钮的样式 */
+.calculator.night-mode .switch input:checked + .slider {
+  background-color: #2196F3;
+}
+
+.calculator.night-mode .switch input:checked + .slider:before {
+  transform: translateX(26px);
+  background-color: white;
 }

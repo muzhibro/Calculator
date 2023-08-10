@@ -2,7 +2,8 @@
 const buttons = document.querySelectorAll('.num-btn, .operator-btn, #clear-btn, #equal-btn, .decimal-btn, #backspace-btn');
 const display = document.getElementById('display');
 const equalButton = document.getElementById('equal-btn');
-
+const nightModeToggle = document.getElementById('night-mode-toggle');
+const calculator = document.querySelector('.calculator');
 // 初始化变量
 let currentInput = '';
 let currentExpression = '';
@@ -37,12 +38,18 @@ buttons.forEach(button => {
     updateDisplay();
   });
 });
-
+nightModeToggle.addEventListener('change', () => {
+  if (nightModeToggle.checked) {
+    calculator.classList.add('night-mode');
+  } else {
+    calculator.classList.remove('night-mode');
+  }
+});
 // 更新显示区域的内容
 function updateDisplay() {
   if (displayResult) {
     const resultHTML = `<div class="result">${currentInput}</div>`; // 创建一个包含结果的 HTML 字符串
-    display.innerHTML = currentExpression+'=' + '<br><br>'+resultHTML; // 更新输出框内容
+    display.innerHTML = currentExpression+ '<br><br>'+resultHTML; // 更新输出框内容
   } else {
     display.textContent = currentExpression; // 显示算式
   }
